@@ -1,0 +1,158 @@
+* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-image: url(janko-ferlic-sfL_QOnmy00-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+header {
+    background-color: #3f3b3b;
+    color: #fff;
+    padding: 15px;
+    text-align:center;
+    /* display: flex; */
+}
+.logo img{
+    width: 139px;
+    height: auto;
+    margin-right:5px;
+}
+
+
+header h1 {
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right:20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+    
+}
+
+form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+}
+
+form button {
+    padding: 8px 15px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.course-list {
+    display: flex;
+      flex-direction:row;
+      flex-wrap:nowrap;
+
+    
+}
+#courses{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.course {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 20px;
+    background-color: #dbb48f;
+
+    border:2px solid;
+    margin-bottom: 20px;
+    
+}
+@media(max-width:768px){
+    .course{
+        width:calc(50% - 20px);
+    }
+}
+@media(max-width:480px){
+    .course{
+        width:100%
+    }
+}
+
+h3{
+    height: 35px;
+    width: 65px;
+    border: 10px solid;
+    text-align: center;
+}
+#toppers-section{
+    padding: 20px;
+    background-color: #dbb48f;
+    
+    border: 2px solid;
+
+}
+.topper{
+    margin-bottom: 20px;
+
+}
+.topper img{
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
