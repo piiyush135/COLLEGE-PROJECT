@@ -13,22 +13,40 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="college-sahayta-high-resolution-logo-transparent.png" alt="website logo">
-            
-        </div>
-        <h1>Previous Years' Question Papers & Notes</h1>
-        <!-- Navigation Menu -->
-        <nav>
-            <ul>
-                <li><i class="fa-solid fa-house"></i><a href="#home"> Home</a></li>
-                <li><i class="fa-solid fa-book-open-reader"></i><a href="#courses"> Courses</a></li>
-                <li><i class="fa-regular fa-address-card"></i><a href="about us.html"> About Us</a></li>
-                <li><i class="fa-solid fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
-                <li><i class="fa-solid fa-right-to-bracket"></i><a href="login.html"> Login</a></li>
-                <!-- Add link to login page -->
-            </ul>
-        </nav>
+        <div class="page">
+            <p style="background-image: url('./high-angle-view-laptop-stationeries-blue-background.jpg');"></p>
+            <div class="logo">
+                <img src="open-book-hand-pointing-icon.png" alt="website logo">
+
+            </div>
+            <h1>Welcome To E-Learning Platform</h1>
+            <!-- Navigation Menu -->
+            <nav>
+                    <ul>
+                        <li><i class="fa-solid fa-house"></i><li><a href="Home">Home</a></li>
+                        <li><i class="fa-solid fa-book-open-reader"></i><li class="dropdown">
+                          <a href="javascript:void(0)" class="dropbtn">Course</a>
+                          <div class="dropdown-content">
+                            <a href="#">BCA</a>
+                            <a href="#">B.com</a>
+                            <a href="#">MBA</a>
+                            <a href="#">BBA</a>
+                            <li><i class="fa-solid fa-address-book"></i><li class="dropdown">
+                                <a href=""class="dropbtn">Contact</a>
+                                <div class="dropdown-content">
+                                  <a href="contact.html">Contact-us</a>
+                                  <a href="#">Student Feedback</a>
+                    <li><i class="fa-solid fa-book-open-reader"></i><li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Login</a>
+                        <div class="dropdown-content">
+                          <a href="#">Collage</a>
+                          <a href="login.html">Student</a>
+                    <!-- Add link to login page -->
+                          </div>
+                        </li>
+                      </ul>
+                </ul>
+            </nav>
     </header>
     <main>
         <section id="home">
@@ -40,55 +58,33 @@
                 <button type="submit">Search</button>
             </form>
         </section>
-        <section id="courses">
-            <h2 style="position: relative ; left: 45%; border:2px solid;font-size: 45px;">Courses</h2>
+        <section id="Course">
+            <h2 style="text-align: center ; left: 40%;  solid;font-size: 45px;">Courses</h2>
             <!-- Course Listings -->
             <div class="course-list">
                 <div class="course">
-
-                    <h3>BCA</h3>
-                    <p> Decription of the course
-                        Lorem ipsum dolor sit amet.</p>
-                    <div class="semester">
-                        <h4>semester 1</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <h4>semester 2</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <h4>semester 3</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <h4>semester 4</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <h4>semester 5</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <h4>semester 6</h4>
-                        <ul>
-                            <li><a href="#">question papers</a></li>
-                            <li><a href="#">view notes</a></li>
-                        </ul>
-                        <hr>
-
-                    </div>
-
+                    <h3 style="position: relative ; left: 20%;  solid;font-size: 30px;">BCA</h3>
+                    <p> BCA program curriculum provides a foundation in computer science, programming concepts,
+                        and applications.</p>
+                        <a href="#">View Question Papers</a>
+                        <a href="#">View Notes</a>
+                    <hr>
                 </div>
 
                 <div class="course">
-                    <h3>B.COM</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, temporibus?</p>
+                    <h3 style="position: relative ; left: 20%;  solid;font-size: 30px;">B.com</h3>
+                    <p>Marketing, Accounting, Entrepreneurship, Taxation, Industrial laws,
+                        Financial accounting, Economics, Company law, Auditing, Business management</p>
+                    <a href="#">View Question Papers</a>
+                    <a href="#">View Notes</a>
+                    <hr>
+                </div>
+
+                <div class="course">
+                    <h3 style="position: relative ; left: 20%;  solid;font-size: 30px;">MBA</h3>
+                    <p> students develop business skills and knowledge,
+                        such as leadership and business acumen.
+                    </p>
                     <a href="#">View Question Papers</a>
                     <a href="#">View Notes</a>
                     <hr>
@@ -96,17 +92,10 @@
 
 
                 <div class="course">
-                    <h3>MBA</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, commodi.</p>
-                    <a href="#">View Question Papers</a>
-                    <a href="#">View Notes</a>
-                    <hr>
-                </div>
-
-
-                <div class="course">
-                    <h3>BBA</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit, dolorem.</p>
+                    <h3 style="position: relative ; left: 20%;  solid;font-size: 30px;">BBA</h3>
+                    <p>Principles of management, Managerial economics,
+                        Financial management, Business law, Accounting, Marketing, Operations management.
+                    </p>
                     <a href="#">View Question Papers</a>
                     <a href="#">View Notes</a>
                     <hr>
@@ -120,14 +109,14 @@
             </div>
         </section>
         <section id="toppers-section">
-            <h2 style="text-align: center;text-decoration: underline;">Topper's Strategies</h2>
+            <h2 style="text-align: center; color: rgb(24, 23, 23); font-size: 40px;">Topper's Strategies</h2>
             <div class="topper">
                 <img src="topper1.jpg" alt="image">
-                <p>strategy:  Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, fuga.</p>
+                <h2 style="color: rgb(12, 12, 12)">Written Notes</h2>
             </div>
             <div class="topper">
                 <img src="topper2.jpg" alt="image">
-                <p>strategy:  Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, fuga.</p>
+                <h2 style="color: rgb(17, 17, 17)">Answer Sheet</h2>
             </div>
 
         </section>
@@ -138,7 +127,8 @@
         <ul>
             <li><i class="fa-brands fa-facebook"></i><a href="#"> Facebook</a></li>
             <li><i class="fa-brands fa-twitter"></i><a href="#"> Twitter</a></li>
-            <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/jatinjoshi2003"> Instagram</a></li>
+            <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/jatinjoshi2003"> Instagram</a>
+            </li>
         </ul>
         <!-- Additional Links -->
         <ul>
@@ -147,6 +137,7 @@
             <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
     </footer>
+    </div>
 </body>
 
 </html>
