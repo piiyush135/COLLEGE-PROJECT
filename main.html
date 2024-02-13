@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="page">
-            <p style="background-image: url('./high-angle-view-laptop-stationeries-blue-background.jpg');"></p>
+            <p style="background-image: url('./high-angle-view-laptop-stationeries-blue-background.jpg');background-size:cover;"></p>
             <div class="logo">
                 <img src="open-book-hand-pointing-icon.png" alt="website logo">
 
@@ -22,29 +22,33 @@
             <h1>Welcome To E-Learning Platform</h1>
             <!-- Navigation Menu -->
             <nav>
-                    <ul>
-                        <li><i class="fa-solid fa-house"></i><a href="Home">Home</a></li>
-                        <li><i class="fa-solid fa-book-open-reader"></i><li class="dropdown">
-                          <a href="javascript:void(0)" class="dropbtn">Course</a>
-                          <div class="dropdown-content">
+                <ul>
+                    <li><i class="fa-solid fa-house"></i><a href="Home">Home</a></li>
+                    <li><i class="fa-solid fa-book-open-reader"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Course</a>
+                        <div class="dropdown-content">
                             <a href="#">BCA</a>
-                            <a href="#">B.com</a>
+                            <a href="#">B.COM</a>
                             <a href="#">MBA</a>
                             <a href="#">BBA</a>
-                            <li><i class="fa-solid fa-address-book"></i><li class="dropdown">
-                                <a href=""class="dropbtn">Contact</a>
-                                <div class="dropdown-content">
-                                  <a href="contact.html">Contact-us</a>
-                                  <a href="#">Student Feedback</a>
-                    <li><i class="fa-solid fa-book-open-reader"></i><li class="dropdown">
+                    <li><i class="fa-solid fa-address-book"></i>
+                    <li class="dropdown">
+                        <a href="" class="dropbtn">Contact</a>
+                        <div class="dropdown-content">
+                            <a href="contact.html">Contact-us</a>
+                            <a href="#">Student Feedback</a>
+                    <li><i class="fa-solid fa-book-open-reader"></i>
+                    <li class="dropdown">
                         <a href="javascript:void(0)" class="dropbtn">Login</a>
                         <div class="dropdown-content">
-                          <a href="#">Collage</a>
-                          <a href="login.html">Student</a>
-                    <!-- Add link to login page -->
-                          </div>
-                        </li>
-                      </ul>
+
+                            <a href="login.html">Student</a>
+                            <!-- Add link to login page -->
+                        </div>
+                    </li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
                 </ul>
             </nav>
     </header>
@@ -59,23 +63,24 @@
             </form>
         </section>
         <section id="Course">
-            <h2 style="text-align: center ; left: 40%;font-size: 45px;">Courses</h2>
+            <h2 style="text-align: center ; left: 40%;  font-size: 45px; margin-bottom:125px;">Courses</h2>
             <!-- Course Listings -->
             <div class="container">
                 <div class="card">
                     <img src="BCA image.jpeg" alt="Sora" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">BCA</h5>
-                        <p class="card-text">BCA program curriculum provides a foundation in computer science, programming concepts,
+                        <p class="card-text">BCA program curriculum provides a foundation in computer science,
+                            programming concepts,
                             and applications</p>
-                        <a href="#" class="btn">More</a>
+                        <a href="BCA.HTML" class="btn">More</a>
                     </div>
                 </div>
                 <div class="card">
                     <img src="banner_bcom.jpg" alt="Umi" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Bcom</h5>
-                        <p class="card-text">Marketing, Accounting, Entrepreneurship, Taxation, Industrial laws,
+                        <h5 class="card-title">B.COM</h5>
+                        <p class="card-text">Marketing, Accounting, Entrepreneurship,
                             Financial accounting, Economics, Company law, Auditing, Business management</p>
                         <a href="#" class="btn">More</a>
                     </div>
@@ -85,19 +90,21 @@
                     <div class="card-body">
                         <h5 class="card-title">BBA</h5>
                         <p class="card-text">Principles of management, Managerial economics,
-                            Financial management, Business law, Accounting, Marketing, Operations management.</p>
+                            Financial management, Business law, Marketing, Operations management.</p>
                         <a href="#" class="btn">More</a>
-                        <div class="card">
-                            <img src="MBA-Life-blog-image-Choosing-MBA.jpg" alt="Mori" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">MBA</h5>
-                                <p class="card-text">students develop business skills and knowledge,
-                                    such as leadership and business acumen.</p>
-                                <a href="#" class="btn">More</a>
-                            </div>        
                     </div>
                 </div>
-            </div>
+                <div class="card">
+                    <img src="MBA-Life-blog-image-Choosing-MBA.jpg" alt="Mori" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">MBA</h5>
+                        <p class="card-text">students develop business skills and knowledge,
+                            such as leadership and business acumen.</p>
+                        <a href="#" class="btn">More</a>
+                    </div>
+                </div>
+
+
                 <!-- Add more courses as needed -->
             </div>
         </section>
