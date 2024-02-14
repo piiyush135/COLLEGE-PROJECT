@@ -47,7 +47,7 @@
                             <!-- Add link to login page -->
                         </div>
                     </li>
-                    <li><a href="register.html">Register</a></li>
+                    
                 </ul>
                 </ul>
             </nav>
@@ -57,10 +57,30 @@
             <h2 style="text-align:center;font-size: 30px;">Welcome to our website!</h2>
             <p style="text-align: center;">Find previous years' question papers and notes for various courses.</p>
             <!-- Search Bar -->
-            <form style="text-align: center;" action="#" method="GET">
-                <input type="text" name="search" placeholder="Search...">
+           <form style="text-align: center;" onsubmit="searchCourse(event)">
+                <input type="text" id="searchInput" name="search" placeholder="Search...">
                 <button type="submit">Search</button>
             </form>
+
+            <script>
+                function searchCourse(event) {
+                    event.preventDefault(); // Prevent default form submission behavior
+                    var searchTerm = document.getElementById("searchInput").value.toLowerCase();
+                    console.log("search term:", searchTerm);
+                    if (searchTerm === "bca") {
+                        window.location.href = "bca.html"; // Redirect to BCA page
+                    } else if (searchTerm === "bba") {
+                        window.location.href = "bba.html"; // Redirect to BBA page
+                    } else if (searchTerm === "bcom") {
+                        window.location.href = "bcom.html"; // Redirect to BCom page
+                    } else if (searchTerm === "mba") {
+                        window.location.href = "mba.html"; // Redirect to MBA page
+                    } else {
+                        alert("Course not found!"); // Display an alert if course not found
+                    }
+                }
+            </script>
+
         </section>
         <section id="Course">
             <h2 style="text-align: center ; left: 40%;  font-size: 45px; margin-bottom:125px;">Courses</h2>
