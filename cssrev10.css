@@ -240,3 +240,19 @@ footer ul li a {
     color: #fff;
     text-decoration: none;
 }
+footer ul li a:hover {
+  color: black;
+  border: none;
+
+}
+
+.whatsapp-button {
+  position:fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-button img {
+  height: 55px;
+}
