@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <script>
+            function redirectToNewPage() {
+                // Redirect to the new page
+                window.location.href = "topper1.html";
+            }
+        </script>
+          <script>
+            function redirectToNewPage2() {
+                // Redirect to the new page
+                window.location.href = "topper2.html";
+            }
+        </script>
 </head>
 
 <body>
@@ -128,16 +140,24 @@
                 <!-- Add more courses as needed -->
             </div>
         </section>
-        <section id="toppers-section">
-            <h2 style="text-align: center; color: rgb(24, 23, 23); font-size: 40px;">Topper's Strategies</h2>
-            <div class="topper">
-                <img src="topper1.jpg" alt="image">
-                <h2 style="color: rgb(12, 12, 12)">Written Notes</h2>
+        <section class="toppers-strategies">
+            <h2 style="text-align: center;  font-size:45px; margin-bottom:25px;">Toppers strategies</h2>
+            <div class="topper-item">
+                <p class="topper-name">Topper 1</p>
+                <p class="topper-notes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
+                <button  onclick="redirectToNewPage()" class="view-more-btn">View More</button>
             </div>
-            <div class="topper">
-                <img src="topper2.jpg" alt="image">
-                <h2 style="color: rgb(17, 17, 17)">Answer Sheet</h2>
+
+            <div class="topper-item">
+                <p class="topper-name">Topper 2</p>
+                <p class="topper-notes">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
+                <button onclick="redirectToNewPage2()" class="view-more-btn">View More</button>
             </div>
+           
+
+            <!-- Add more topper items as needed -->
 
         </section>
     </main>
