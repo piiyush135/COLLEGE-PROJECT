@@ -201,20 +201,61 @@ h3{
     width: 65px;
     text-align: center;
 }
-#toppers-section{
-    padding: 20px;    
-    
-}
-.topper{
-    margin-bottom: 20px;
-}
-.topper img{
-    width: 100%;
-    max-width: 400px;
-    display: block;
-    margin-bottom: 10px;
+.toppers-strategies {
+  margin: 50px auto;
+  max-width: 800px;
+  padding: 20px;
+  position: relative;
+  left: 16%;
+  background-color:none;
+  border-radius: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+/* Style individual topper items */
+.topper-item {
+  /* flex: 0 0 calc(50% - 10px); */
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+  right:25%;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the topper name */
+.topper-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style the topper notes */
+.topper-notes {
+  color: #666;
+}
+.view-more-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-more-btn:hover {
+  background-color: #0056b3;
+}
 
 footer {
     background-color: #0a0a0a;
