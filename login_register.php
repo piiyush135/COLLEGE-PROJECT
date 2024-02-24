@@ -15,6 +15,8 @@ if(isset($_POST['login']))
      {
        $result_fetch = mysqli_fetch_assoc($result);
        // Perform further authentication checks here
+        header("Location:main.html");
+        exit();
      }
      else
      {
@@ -35,8 +37,7 @@ if(isset($_POST['login']))
        </script>
        ";
    }
-   header("location:main.html");
-   exit();
+  
 }
 
 
