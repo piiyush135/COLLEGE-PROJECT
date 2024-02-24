@@ -1,23 +1,26 @@
 <?php
 
 require('connection.php');
-#for login
+
+// For login
 if(isset($_POST['login']))
 {
-   $query="SELECT * FROM 'registered_user' WHERE 'email'='$_post[email_username]' OR 'username'='$_post[email_username]'";
-   $result=mysqli_query($con,$query);
+   $email_username = $_POST['email_username'];
+   $query = "SELECT * FROM registered_user WHERE email='$email_username' OR username='$email_username'";
+   $result = mysqli_query($con, $query);
 
    if($result)
    {
-     if(mysqli_num_rows($result)==1)
+     if(mysqli_num_rows($result) == 1)
      {
-       $result_fetch=mysqli_fetch_assoc($result);
+       $result_fetch = mysqli_fetch_assoc($result);
+       // Perform further authentication checks here
      }
      else
      {
-        echo"
+        echo "
        <script>
-       alert('Email or Username  Not Registered');
+       alert('Email or Username Not Registered');
        window.location.href='index.php';
        </script>
        ";
@@ -25,9 +28,9 @@ if(isset($_POST['login']))
    }
    else
    {
-    echo"
+    echo "
        <script>
-       alert('cannot Run Query');
+       alert('Cannot Run Query');
        window.location.href='index.php';
        </script>
        ";
@@ -35,22 +38,35 @@ if(isset($_POST['login']))
 }
 
 
-#for registration
-if(isset($_post['register']))
+// For registration
+if(isset($_POST['register']))
 {
-    $user_exist_query="SELECT * FROM 'registered_user' WHERE 'Username'='$_post[username]'OR 'E-mail'='$_post'[email]";
-    $result=mysqli_query($con,$user_exist_query);
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    
+    $user_exist_query = "SELECT * FROM registered_user WHERE Username='$username' OR `E-mail`='$email'";
+    $result = mysqli_query($con, $user_exist_query);
 
     if($result)
     {
-      if(mysqli_num_rows($result)>0)
+      if(mysqli_num_rows($result) > 0)
       {
-        $result_fetch=mysqli_fetch_assoc($result);
-        if($result_fetch['username']==$_post['username'])
+        $result_fetch = mysqli_fetch_assoc($result);
+        if($result_fetch['Username'] == $username)
         {
-            echo"
+            echo "
             <script> 
-             alert('$result_fetch[username]-Username already taken');
+             alert('$username - Username already taken');
+              window.location.href='index.php';
+            </script>
+            ";
+        }
+        elseif ($result_fetch['E-mail'] == $email)
+        {
+            echo "
+            <script>
+             alert('$email - E-mail already registered');
               window.location.href='index.php';
             </script>
             ";
@@ -58,45 +74,35 @@ if(isset($_post['register']))
       }
       else
       {
-        echo"
-            <script>
-             alert('$result_fetch[email]-E-mail already registered');
-              window.location.href='index.php';
-            </script>
-            ";
-      }
-    }
-        else
-        {
-          $password=password_hash($_POST['password'],PASSWORD_BCRYPT);
-          $query="INSERT INTO `registered_user`(`Full Name`, `Username`, `E-mail`, `Password`) VALUES ($_post'[fullname]','$_post[username]','$_post[email]','$password')";
-          if(mysqli_query($con,$query))
+          $query = "INSERT INTO registered_user (`Full Name`, `Username`, `E-mail`, `Password`) VALUES ('$_POST[fullname]', '$username', '$email', '$password')";
+          if(mysqli_query($con, $query))
           {
-            echo"
+            echo "
             <script>
-              alert('registration successful');
+              alert('Registration successful');
                window.location.href='index.php';
            </script>
          ";
           }
           else
           {
-            echo"
+            echo "
              <script>
-               alert('cannot Run Query');
+               alert('Cannot Run Query');
                 window.location.href='index.php';
             </script>
           ";
           }
-        }
+      }
     }
     else
     {
-       echo"
+       echo "
        <script>
-       alert('cannot Run Query');
+       alert('Cannot Run Query');
        window.location.href='index.php';
        </script>
        ";
     }
+}
 ?>
