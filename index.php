@@ -3,26 +3,40 @@ require('connection.php');
 
 if(isset($_POST['login'])) {
    $email_username = $_POST['email_username'];
-   // Using prepared statement to prevent SQL injection
-   $query = "SELECT * FROM registered_user WHERE email=? OR username=?";
-   $stmt = mysqli_prepare($con, $query);
-   mysqli_stmt_bind_param($stmt, "ss", $email_username, $email_username);
-   mysqli_stmt_execute($stmt);
-   $result = mysqli_stmt_get_result($stmt);
-
-   if($result && mysqli_num_rows($result) == 1) {
-     $result_fetch = mysqli_fetch_assoc($result);
-     // Perform further authentication checks here
-     // Assuming authentication is successful, redirect to main.html
-     header("Location: main.html");
-     exit(); // Ensure that no further code is executed after redirection
+   $password = $_POST['password'];
+   
+   // Check if username and password are not empty
+   if(empty($email_username) || empty($password)) {
+      echo "<script>alert('Please enter both email/username and password'); window.location.href='login_register.php';</script>";
+      exit();
    } else {
-     echo "<script>alert('Email or Username Not Registered'); window.location.href='login_register.php';</script>";
-     exit();
+      // Using prepared statement to prevent SQL injection
+      $query = "SELECT * FROM registered_user WHERE email=? OR username=?";
+      $stmt = mysqli_prepare($con, $query);
+      mysqli_stmt_bind_param($stmt, "ss", $email_username, $email_username);
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      if($result && mysqli_num_rows($result) == 1) {
+         $result_fetch = mysqli_fetch_assoc($result);
+         // Verify password
+         if(password_verify($password, $result_fetch['Password'])) {
+            // Password is correct, redirect to main.html
+            header("Location: main.html");
+            exit(); // Ensure that no further code is executed after redirection
+         } else {
+            echo "<script>alert('Incorrect password'); window.location.href='login_register.php';</script>";
+            exit();
+         }
+      } else {
+         echo "<script>alert('Email or Username Not Registered'); window.location.href='login_register.php';</script>";
+         exit();
+      }
    }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
