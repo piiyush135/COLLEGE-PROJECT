@@ -35,6 +35,8 @@ if(isset($_POST['login']))
        </script>
        ";
    }
+   header("location:main.html");
+   exit();
 }
 
 
