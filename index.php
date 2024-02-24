@@ -1,4 +1,28 @@
-<?php require('connection.php'); ?>
+<?php 
+require('connection.php'); 
+
+if(isset($_POST['login'])) {
+   $email_username = $_POST['email_username'];
+   // Using prepared statement to prevent SQL injection
+   $query = "SELECT * FROM registered_user WHERE email=? OR username=?";
+   $stmt = mysqli_prepare($con, $query);
+   mysqli_stmt_bind_param($stmt, "ss", $email_username, $email_username);
+   mysqli_stmt_execute($stmt);
+   $result = mysqli_stmt_get_result($stmt);
+
+   if($result && mysqli_num_rows($result) == 1) {
+     $result_fetch = mysqli_fetch_assoc($result);
+     // Perform further authentication checks here
+     // Assuming authentication is successful, redirect to main.html
+     header("Location: main.html");
+     exit(); // Ensure that no further code is executed after redirection
+   } else {
+     echo "<script>alert('Email or Username Not Registered'); window.location.href='login_register.php';</script>";
+     exit();
+   }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +50,7 @@
 
   <div class="popup-container" id="login-popup">
     <div class="popup">
-      <form method="POST" action="login_register.php">
+      <form method="POST" action="">
         <h2>
           <span>USER LOGIN</span>
           <button type="reset" onclick="popup('login-popup')">X</button>
