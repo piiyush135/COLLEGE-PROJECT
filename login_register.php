@@ -8,7 +8,7 @@ require('connection.php');
 if(isset($_POST['login'])) {
    $email_username = $_POST['email_username'];
    // Using prepared statement to prevent SQL injection
-   $query = "SELECT * FROM registered_user WHERE email=? OR username=?";
+   $query = "SELECT * FROM registered_user WHERE `E-mail`=? OR username=?";
    $stmt = mysqli_prepare($con, $query);
    mysqli_stmt_bind_param($stmt, "ss", $email_username, $email_username);
    mysqli_stmt_execute($stmt);
@@ -36,7 +36,7 @@ if(isset($_POST['register']))
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     
-    $user_exist_query = "SELECT * FROM registered_user WHERE Username='$username' OR `E-mail`='$email'";
+    $user_exist_query = "SELECT * FROM registered_user WHERE `Username`=? OR `E-mail`=?";
     $result = mysqli_query($con, $user_exist_query);
 
     if($result)
