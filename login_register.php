@@ -16,8 +16,8 @@ if(isset($_POST['login'])) {
      if(mysqli_num_rows($result) == 1) {
        $result_fetch = mysqli_fetch_assoc($result);
        // Perform further authentication checks here
-       // Assuming authentication is successful, redirect to main.html
-       header("Location: main.html");
+       // Assuming authentication is successful, redirect to main.htm
+header("Location: main.html");
        exit(); // Ensure that no further code is executed after redirection
      } else {
        showErrorAlert("Email or Username Not Registered");
