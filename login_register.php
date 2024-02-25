@@ -4,6 +4,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require('connection.php');
 
+// Function to display error alert and redirect
+function showErrorAlert($message, $redirectUrl) {
+    echo "<script>alert('$message'); window.location.href='$redirectUrl';</script>";
+    exit();
+}
+
 // For login
 if(isset($_POST['login'])) {
    $email_username = $_POST['email_username'];
@@ -19,81 +25,46 @@ if(isset($_POST['login'])) {
        $result_fetch = mysqli_fetch_assoc($result);
        // Perform further authentication checks here
        // Assuming authentication is successful, redirect to main.htm
-header("Location: main.html");
+       header("Location: main.html");
        exit(); // Ensure that no further code is executed after redirection
      } else {
-       showErrorAlert("Email or Username Not Registered");
+       showErrorAlert("Email or Username Not Registered", "index.php");
      }
    } else {
-      showErrorAlert("Cannot Run Query");
+      showErrorAlert("Cannot Run Query", "index.php");
    }
 }
 
 // For registration
 if(isset($_POST['register']))
 {
+    $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     
     $user_exist_query = "SELECT * FROM registered_user WHERE `Username`=? OR `E-mail`=?";
-    $result = mysqli_query($con, $user_exist_query);
+    $stmt = mysqli_prepare($con, $user_exist_query);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if($result)
-    {
-      if(mysqli_num_rows($result) > 0)
-      {
+    if($result && mysqli_num_rows($result) > 0) {
         $result_fetch = mysqli_fetch_assoc($result);
-        if($result_fetch['Username'] == $username)
-        {
-            echo "
-            <script> 
-             alert('$username - Username already taken');
-              window.location.href='index.php';
-            </script>
-            ";
+        if($result_fetch['Username'] == $username) {
+            showErrorAlert("$username - Username already taken", "index.php");
+        } elseif ($result_fetch['E-mail'] == $email) {
+            showErrorAlert("$email - E-mail already registered", "index.php");
         }
-        elseif ($result_fetch['E-mail'] == $email)
-        {
-            echo "
-            <script>
-             alert('$email - E-mail already registered');
-              window.location.href='index.php';
-            </script>
-            ";
+    } else {
+        $query = "INSERT INTO registered_user (`Full Name`, `Username`, `E-mail`, `Password`) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($con, $query);
+        mysqli_stmt_bind_param($stmt, "ssss", $fullname, $username, $email, $password);
+        if(mysqli_stmt_execute($stmt)) {
+            showErrorAlert("Registration successful", "index.php");
+        } else {
+            showErrorAlert("Cannot Run Query", "index.php");
         }
-      }
-      else
-      {
-          $query = "INSERT INTO registered_user (`Full Name`, `Username`, `E-mail`, `Password`) VALUES ('$_POST[fullname]', '$username', '$email', '$password')";
-          if(mysqli_query($con, $query))
-          {
-            echo "
-            <script>
-              alert('Registration successful');
-               window.location.href='index.php';
-           </script>
-         ";
-          }
-          else
-          {
-            echo "
-             <script>
-               alert('Cannot Run Query');
-                window.location.href='index.php';
-            </script>
-          ";
-          }
-      }
-    }
-    else
-    {
-       echo "
-       <script>
-       alert('Cannot Run Query');
-       window.location.href='index.php';
-       </script>
-       ";
     }
 }
 ?>
