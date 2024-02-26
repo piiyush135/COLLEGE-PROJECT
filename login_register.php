@@ -24,12 +24,12 @@ if(isset($_POST['login'])) {
 
    if($result && mysqli_num_rows($result) == 1) {
       $result_fetch = mysqli_fetch_assoc($result);
-      // Debugging: Output retrieved password and password entered by the user
-      echo "Retrieved Password: " . $result_fetch['Password'] . "<br>";
-      echo "Entered Password: " . $password . "<br>";
-      
-      // Verify password
-      if(password_verify($password, $result_fetch['Password'])) {
+
+      // Retrieving hashed password from the database
+      $hashed_password_from_db = $result_fetch['Password'];
+
+      // Comparing the entered password with the hashed password using password_verify()
+      if(password_verify($password, $hashed_password_from_db)) {
          // Password is correct, redirect to main.html
          header("Location: main.html");
          exit(); // Ensure that no further code is executed after redirection
@@ -49,8 +49,12 @@ if(isset($_POST['register']))
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = $_POST['password']; // Assuming you get the password from the form
     
+    // Hashing the password during registration
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+    // Store $hashed_password in the database
+
     $user_exist_query = "SELECT * FROM registered_user WHERE `Username`=? OR `E-mail`=?";
     $stmt = mysqli_prepare($con, $user_exist_query);
     mysqli_stmt_bind_param($stmt, "ss", $username, $email);
@@ -67,7 +71,7 @@ if(isset($_POST['register']))
     } else {
         $query = "INSERT INTO registered_user (`Full Name`, `Username`, `E-mail`, `Password`) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "ssss", $fullname, $username, $email, $password);
+        mysqli_stmt_bind_param($stmt, "ssss", $fullname, $username, $email, $hashed_password); // Use hashed password
         if(mysqli_stmt_execute($stmt)) {
             showErrorAlert("Registration successful", "index.php");
         } else {
