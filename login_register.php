@@ -11,19 +11,29 @@ function showErrorAlert($message, $redirectUrl) {
 }
 
 // For login
+
 if(isset($_POST['login'])) {
    $email_username = $_POST['email_username'];
    $password = $_POST['password'];
    
    // Using prepared statement to prevent SQL injection
-   $query = "SELECT * FROM registered_user WHERE email=? OR username=?";
+   $query = "SELECT * FROM registered_user WHERE `E-mail`=? OR username=?";
    $stmt = mysqli_prepare($con, $query);
    mysqli_stmt_bind_param($stmt, "ss", $email_username, $email_username);
    mysqli_stmt_execute($stmt);
    $result = mysqli_stmt_get_result($stmt);
 
+   // Debugging: Output the result of the query and the entered email/username
+   echo "Entered Email/Username: $email_username<br>";
+   echo "Query Result: ";
+   print_r($result);
+
    if($result && mysqli_num_rows($result) == 1) {
       $result_fetch = mysqli_fetch_assoc($result);
+
+      // Debugging: Output retrieved user data
+      echo "Retrieved User Data: ";
+      print_r($result_fetch);
 
       // Retrieving hashed password from the database
       $hashed_password_from_db = $result_fetch['Password'];
@@ -34,14 +44,13 @@ if(isset($_POST['login'])) {
          header("Location: main.html");
          exit(); // Ensure that no further code is executed after redirection
       } else {
-         echo "<script>alert('Incorrect password'); window.location.href='login_register.php';</script>";
-         exit();
+         echo "<script>alert('Incorrect password');</script>";
       }
    } else {
-      echo "<script>alert('Email or Username Not Registered'); window.location.href='login_register.php';</script>";
-      exit();
+      echo "<script>alert('Email or Username Not Registered');</script>";
    }
 }
+
 
 // For registration
 if(isset($_POST['register']))
