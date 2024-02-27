@@ -45,6 +45,9 @@ if(isset($_POST['login'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User - Login and Register</title>
   <link rel="stylesheet" href="style.css">
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 </head>
 <body>
   
@@ -74,6 +77,13 @@ if(isset($_POST['login'])) {
         <button type="submit" class="login-btn" name="login">LOGIN</button>
       </form>
     </div>
+     <script>
+    // Disable back navigation from the login page
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  </script>
   </div>
 
   <div class="popup-container" id="register-popup">
