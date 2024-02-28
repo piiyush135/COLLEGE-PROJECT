@@ -1,12 +1,4 @@
 <?php
-session_start();
-
-// Check if the user is already logged in
-if(isset($_SESSION['logged_in'])) {
-    // Redirect to main page if already logged in
-    header("Location: main.php");
-    exit();
-}
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
