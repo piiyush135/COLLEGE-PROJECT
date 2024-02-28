@@ -59,7 +59,17 @@ if(isset($_POST['register']))
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password']; // Assuming you get the password from the form
-    
+
+    // Check if any field is empty
+    if(empty($fullname) || empty($username) || empty($email) || empty($password)) {
+        echo "<script>alert('Please fill in all fields'); window.location.href='login_register.php';</script>";
+        exit();
+    }
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Invalid email format'); window.location.href='login_register.php';</script>";
+        exit();
+    }
     // Hashing the password during registration
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     // Store $hashed_password in the database
